@@ -87,8 +87,10 @@ const personajesSlice = createSlice({
             .addCase(getPersonaje.fulfilled, (state, action) => {
                 state.loading = false
                 state.error = false
-                state.personajes= action.payload.results
-                state.paginacion = action.payload.info
+                if(!action.payload.error) {
+                   state.personajes= action.payload.results
+                    state.paginacion = action.payload.info 
+                }  
             })
             .addCase(getPersonaje.rejected, (state, action) => {
                 state.loading = false

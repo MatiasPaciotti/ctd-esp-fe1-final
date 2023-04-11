@@ -46,6 +46,7 @@ const GrillaPersonajes = ({page, onFavoriteClick, favoritos}: GrillaPersonajesPr
                 )
             }
         </div>
+        { !!personajes.length && <h1>No se encontro ningun personaje</h1>}
         { loading && <Loader /> }
     </>
     
