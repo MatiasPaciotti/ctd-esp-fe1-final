@@ -54,7 +54,7 @@ const PaginaFavoritos = () => {
                 </button>
             </div>
             {favoritos.length > 0 ? (
-                <GrillaPersonajes page={1} favoritos={favoritos} personaje={listaFavoritos} onFavoriteClick={onFavoriteClick} />
+                <GrillaPersonajes favoritos={favoritos} personaje={listaFavoritos} onFavoriteClick={onFavoriteClick} />
             ) : (
                 <h1>No se encontraron personajes favoritos</h1>
             )}

@@ -10,26 +10,26 @@ import './paginacion.css';
  * @returns un JSX element 
  */
 interface Props {
-    setPage: React.Dispatch<React.SetStateAction<number>>,
+    onPreviousclick: () => void;
+    onNextClick: () => void;
+    disableNext: boolean;
+    disablePrev: boolean;
 }
 
-const Paginacion = ({setPage}: Props) => {
-
-    const { prev, next } = useAppSelector(state => state.personajes.paginacion)
-    
+const Paginacion = ({onPreviousclick,onNextClick,disableNext,disablePrev,}: Props) => { 
 
     return <div className="paginacion">
         <button 
-            onClick={() => setPage(prevState => prevState - 1)} 
-            disabled={prev === null } 
-            className={"primary"}
+            disabled={disablePrev}
+            className={'primary'}
+            onClick={onPreviousclick}
         >
             Anterior
         </button>
         <button 
-            onClick={() => setPage(prevState => prevState + 1)} 
-            disabled={next === null } 
-            className={"primary"}
+            disabled={disableNext}
+            className={'primary'}
+            onClick={onNextClick}
         >
             Siguiente
         </button>

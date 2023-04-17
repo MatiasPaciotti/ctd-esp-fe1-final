@@ -1,14 +1,24 @@
-import { useAppDispatch } from '../../redux/hooks';
-import { getPersonaje } from '../../slices/PersonajesSlice';
 import './filtros.css';
 
-const Filtros = () => {
+interface Props {
+    inputRef: React.RefObject<HTMLInputElement>;
+    searchCharacter: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
+}
 
-    const dispatch = useAppDispatch()
+const Filtros = ({ inputRef, searchCharacter, value } : Props) => {
 
     return <div className="filtros">
         <label htmlFor="nombre">Filtrar por nombre:</label>
-        <input onChange={(e) => dispatch(getPersonaje(e.target.value))} type="text" placeholder="Rick, Morty, Beth, Alien, ...etc" name="nombre" />
+        <input 
+            onChange={searchCharacter} 
+            type="text" 
+            placeholder="Rick, Morty, Beth, Alien, ...etc" 
+            name="nombre"
+            value={value}
+            ref={inputRef}
+            autoComplete='off' 
+        />
     </div>
 }
 
